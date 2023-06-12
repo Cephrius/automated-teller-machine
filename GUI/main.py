@@ -4,55 +4,35 @@
 # Description: the goal to develop a runtime software that acts as an ATM machine for a user with the use of OOP.      #
 ########################################################################################################################
 
-# stores all login info acts as 
-account1 = { # <----- Account 1 
-    "accountName":   "Tanya Wilson",
-    "accountNumber":  "2241323",
-    "accountPin":     2214
-}
+ 1# set rules for making a username and password:
+class credentials:
+    def __init__(self,name,accountNumber,accountPin) -> None:
+        self.name = name
+        self.accountNumber = accountNumber
+        self.accountPin = accountPin
+        
+        
+        def login(self):
+            entered_account_number = input("Enter you account number: ")
+            entered_account_pin = input("Enter you account pin: ")
+            
+            if entered_account_number == self.accountNumber and entered_account_pin == self.accountPin:
+                print("Login Succssful!!")
+            
+            else:
+                print("Invalid account number or pin.")
+        
+# create the user accounts:
+credential_1 = credentials("Tanya Wilson",2241323,2214)
+credential_2 = credentials("John Smith",9388292,5516)
+credential_3 = credentials("Laura Johnson",2856291,2617)
+credential_4 = credentials("Micheal Davis",560101,6373)
+credential_5 = credentials("Emily Anderson",5429910,4827)
+credential_6 = credentials("Christoper Thompson",2851798,9271)
 
-account2 = {
-    "accountName":   "John Smith",
-    "accountNumber": "9388292",
-    "accountPin" :    5516
-}
+        login()
 
-account3 = {
-    "accountName":    "Laura Johnson",
-    "accountNumber":  "2856291",
-    "accountPin" :     2617
-}
-
-account4 = {
-    "accountName":   "Micheal Davis",
-    "accountNumber": "560101",
-    "accountPin" :    6373
-}
-
-account5 = {
-    "accountName":   "Emily Anderson",
-    "accountNumber": "5429910",
-    "accountPin" :    4827
-}
-
-account6 = {
-    "accountName":   "Christpher Thompson",
-    "accountNumber": "2851798",
-    "accountPin" :    9271
-}
-
-accInfo = {
-    "account1": account1,
-    "account2": account2,
-    "account3": account3,
-    "account4": account4,
-    "account5": account5,
-    "account6": account6
-
-}
-
-
-def checkingAccount():
+"""def checkingAccount():
     print("######################## Welcome to your Checking Account!! ###########################")
     print("Account Number: " +accountNumber)
     print()
@@ -84,28 +64,28 @@ def mainScreen():
         savingsAccount()
     elif select.casefold() == "Log Out ":
         Login()
-
+"""
 
 
 ### <----- To authenticate user
 accountNumber = input("Enter you account number: ")
 while True:
-    
-    if accountNumber == accInfo["accountNumber"]:
-        accountPin = input("Enter your pin: ")
-        if accountPin in accInfo["accountPin"]:
-            mainScreen()
-            break
-        else: 
-            print("########################## INCORRECT PIN NUMBER #############################") # <----- Prints when incorrect account number is inputed
-            
-    else:
-        print("########################## INCORRECT ACCOUNT NUMBER #############################")# <----- Prints when incorrect pin number is inputed
-        accountNumber = input("Enter you account number: ")
+    for key,value in accInfo.items():
+        if accountNumber in value:
+            accountPin = input("Enter your pin: ")
+            if accountPin in accInfo[accountNumber]["accountPin"]:
+                mainScreen()
+                break
+            else: 
+                print("########################## INCORRECT PIN NUMBER #############################") # <----- Prints when incorrect account number is inputed
+                    
+        else:
+            print("########################## INCORRECT ACCOUNT NUMBER #############################")# <----- Prints when incorrect pin number is inputed
+            accountNumber = input("Enter you account number: ")
 
     
     
-  
+
 
 
 
